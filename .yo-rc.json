@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "it.plansoft.jhipstertest"
+    },
+    "jhipsterVersion": "6.1.0",
+    "applicationType": "monolith",
+    "baseName": "testplan",
+    "packageName": "it.plansoft.jhipstertest",
+    "packageFolder": "it/plansoft/jhipstertest",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": false,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "N2FhMWI0MzI1Yjg5OTZiZDAyODJiNDRiZGIzZjM3NGZiMWY5NTZlZjMyZWQxYjFlYjcwMDk1OWNlZjgzNjNlMWM3NzM3ODNmMDUyNmY5MjdkNTUyM2EzZjExNWMxMjRjOWEyOWM0OWE2ZWEyNTI3MDUxZmI1YTI4NWY3ZGExZTc=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cosmo",
+    "clientThemeVariant": "dark",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false
+  }
+}

@@ -1,0 +1,61 @@
+<div>
+    <h2 id="page-heading">
+        <span>Skill</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-skill" [routerLink]="['/skill/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Skill
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="skills?.length === 0">
+        <span>No skill found</span>
+    </div>
+    <div class="table-responsive" *ngIf="skills?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Descrizione</span></th>
+            <th><span>Ordine Visualizzazione</span></th>
+            <th><span>Livello</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let skill of skills ;trackBy: trackId">
+                <td><a [routerLink]="['/skill', skill.id, 'view' ]">{{skill.id}}</a></td>
+                <td>{{skill.descrizione}}</td>
+                <td>{{skill.ordineVisualizzazione}}</td>
+                <td>{{skill.livello}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/skill', skill.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/skill', skill.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'skill', { outlets: { popup: skill.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

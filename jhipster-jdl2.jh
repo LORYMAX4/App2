@@ -1,0 +1,19 @@
+entity Dipendente
+{
+	nome String,
+	cognome String,
+	email String,
+	numeroDiTelefono String,
+	dataAssunzione Instant
+}
+
+entity Skill 
+{
+	descrizione String,
+    ordineVisualizzazione Integer,
+    livello Integer
+}
+relationship ManyToMany
+{
+Dipendente{Skill} to Skill{Dipendente}
+}

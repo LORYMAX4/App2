@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Dipendente.
+    -->
+    <changeSet id="20190617081036-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="dipendente_id"
+                                 baseTableName="dipendente_skill"
+                                 constraintName="fk_dipendente_skill_dipendente_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dipendente"/>
+
+        <addForeignKeyConstraint baseColumnNames="skill_id"
+                                 baseTableName="dipendente_skill"
+                                 constraintName="fk_dipendente_skill_skill_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="skill"/>
+        
+    </changeSet>
+</databaseChangeLog>

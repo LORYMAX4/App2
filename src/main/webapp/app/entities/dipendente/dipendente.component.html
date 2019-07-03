@@ -1,0 +1,80 @@
+<div>
+    <h2 id="page-heading">
+        <span>Dipendente</span>
+        <span>{{nDipendenti}}</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-dipendente" [routerLink]="['/dipendente/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Crea Nuovo Dipendente
+            </span>
+        </button>
+    </h2>
+    
+</button>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="dipendentes?.length === 0">
+        <span>No dipendente found</span>
+    </div>
+    <div class="table-responsive" *ngIf="dipendentes?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Nome</span></th>
+            <th><span>Cognome</span></th>
+            <th><span>Email</span></th>
+            <th><span>Numero Di Telefono</span></th>
+            <th><span>Data Assunzione</span></th>
+            <th><span>Skill</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dipendente of dipendentes ;trackBy: trackId">
+                <td><a [routerLink]="['/dipendente', dipendente.id, 'view' ]">{{dipendente.id}}</a></td>
+                <td>{{dipendente.nome}}</td>
+                <td>{{dipendente.cognome}}</td>
+                <td>{{dipendente.email}}</td>
+                <td>{{dipendente.numeroDiTelefono}}</td>
+                <td>{{dipendente.dataAssunzione | date:'medium'}}</td>
+                <td>
+                    <span *ngFor="let skill of dipendente.skills; let last = last">
+                          <ul><li><a class="form-control-static" [routerLink]="['../skill', skill?.id, 'view' ]">{{skill.descrizione}}</a>{{last ? '' : ', '}}<br></li>
+                            <ngb-rating [(rate)]="skill.livello"></ngb-rating>
+                            <hr>
+                            <pre ng-model="terminal.livello">Rate: <b>{{skill.livello}}</b></pre></ul> 
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/dipendente', dipendente.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/dipendente', dipendente.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'dipendente', { outlets: { popup: dipendente.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+

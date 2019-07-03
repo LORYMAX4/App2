@@ -1,0 +1,36 @@
+{
+    "name": "Skill",
+    "fields": [
+        {
+            "fieldName": "descrizione",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "ordineVisualizzazione",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "livello",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "dipendente",
+            "otherEntityRelationshipName": "skill",
+            "relationshipName": "dipendente",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190617081037",
+    "entityTableName": "skill",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
