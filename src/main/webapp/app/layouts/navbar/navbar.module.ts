@@ -7,8 +7,7 @@ import { TestplanSharedModule } from 'app/shared';
 import {
 NavbarComponent,
 navbarRoute,
-} from 'C:/Users/utente/App2-master/src/main/webapp/app/layouts/navbar/index';
-import { faCity } from '@fortawesome/free-solid-svg-icons';
+} from 'C:/Users/LORYMAX/App2-master/src/main/webapp/app/layouts/navbar/index';
 
 @NgModule({
   imports: [ NbLayoutModule],
