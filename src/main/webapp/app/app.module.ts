@@ -6,8 +6,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NgJhipsterModule } from 'ng-jhipster';
-import { NbThemeModule, NbUserModule, NbCardModule } from '@nebular/theme';
-import { HttpClientModule } from '@angular/common/http';
+
 import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
@@ -19,14 +18,12 @@ import { TestplanHomeModule } from './home/home.module';
 import { TestplanAccountModule } from './account/account.module';
 import { TestplanEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
-import { TestplanAppHiThereModule } from './hi-there/hi-there.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ErrorComponent } from './layouts';
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpClientModule,
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-' }),
     NgJhipsterModule.forRoot({
       // set below to true to make alerts look like toast
@@ -37,12 +34,9 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     TestplanCoreModule,
     TestplanHomeModule,
     TestplanAccountModule,
-    TestplanAppHiThereModule,
     // jhipster-needle-angular-add-module JHipster will add new module here
     TestplanEntityModule,
-    TestplanAppRoutingModule,
-    NbThemeModule.forRoot(),
-    NbUserModule
+    TestplanAppRoutingModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
   providers: [

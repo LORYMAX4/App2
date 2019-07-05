@@ -1,7 +1,9 @@
 package it.plansoft.jhipstertest.web.rest;
+
 import it.plansoft.jhipstertest.config.Constants;
 import it.plansoft.jhipstertest.domain.User;
 import it.plansoft.jhipstertest.repository.UserRepository;
+import it.plansoft.jhipstertest.repository.search.UserSearchRepository;
 import it.plansoft.jhipstertest.security.AuthoritiesConstants;
 import it.plansoft.jhipstertest.service.MailService;
 import it.plansoft.jhipstertest.service.UserService;
@@ -16,7 +18,6 @@ import io.github.jhipster.web.util.ResponseUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,6 +33,10 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import static org.elasticsearch.index.query.QueryBuilders.*;
 
 /**
  * REST controller for managing users.
@@ -65,18 +70,21 @@ public class UserResource {
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
-    @Autowired
+
     private final UserService userService;
 
     private final UserRepository userRepository;
 
     private final MailService mailService;
 
-    public UserResource(UserService userService, UserRepository userRepository, MailService mailService) {
+    private final UserSearchRepository userSearchRepository;
+
+    public UserResource(UserService userService, UserRepository userRepository, MailService mailService, UserSearchRepository userSearchRepository) {
 
         this.userService = userService;
         this.userRepository = userRepository;
         this.mailService = mailService;
+        this.userSearchRepository = userSearchRepository;
     }
 
     /**
@@ -187,5 +195,18 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.noContent().headers(HeaderUtil.createAlert(applicationName,  "A user is deleted with identifier " + login, login)).build();
+    }
+
+    /**
+     * {@code SEARCH /_search/users/:query} : search for the User corresponding to the query.
+     *
+     * @param query the query to search.
+     * @return the result of the search.
+     */
+    @GetMapping("/_search/users/{query}")
+    public List<User> search(@PathVariable String query) {
+        return StreamSupport
+            .stream(userSearchRepository.search(queryStringQuery(query)).spliterator(), false)
+            .collect(Collectors.toList());
     }
 }

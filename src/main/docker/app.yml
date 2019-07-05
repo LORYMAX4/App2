@@ -8,9 +8,15 @@ services:
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
       - SPRING_DATASOURCE_URL=jdbc:mysql://testplan-mysql:3306/testplan?useUnicode=true&characterEncoding=utf8&useSSL=false
       - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATA_JEST_URI=http://testplan-elasticsearch:9200
+      - SPRING_ELASTICSEARCH_REST_URIS=http://testplan-elasticsearch:9200
     ports:
       - 8080:8080
   testplan-mysql:
     extends:
       file: mysql.yml
       service: testplan-mysql
+  testplan-elasticsearch:
+    extends:
+      file: elasticsearch.yml
+      service: testplan-elasticsearch

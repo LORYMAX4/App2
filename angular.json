@@ -1,7 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "styles":"node_modules/@nebular/theme/styles/prebuilt/dark.css",
   "newProjectRoot": "projects",
   "projects": {
     "testplan": {
@@ -23,8 +22,6 @@
       "prefix": "jhi",
       "styleExt": "scss"
     },
-
-    
     "@schematics/angular:directive": {
       "spec": false,
       "prefix": "jhi"
@@ -38,6 +35,5 @@
     "@schematics/angular:service": {
       "spec": false
     }
-    
   }
 }
