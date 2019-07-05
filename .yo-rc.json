@@ -33,7 +33,7 @@
     "dtoSuffix": "DTO",
     "otherModules": [],
     "enableTranslation": false,
-    "herokuAppName": "testplan",
+    "herokuAppName": "testplanalternanzascuolavoro",
     "herokuDeployType": "git"
   }
 }
